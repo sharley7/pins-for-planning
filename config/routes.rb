@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :pin_endorsements
   resources :comments
   resources :boards
+  resources :sessions 
   root 'static#index'
   get '/auth/facebook/callback' => 'sessions#create'
 
