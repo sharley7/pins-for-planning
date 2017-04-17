@@ -10,5 +10,11 @@ class Pin < ApplicationRecord
   has_attached_file :image, :styles => { :medium => "300x300>" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  def tags_attributes=(tags_attributes)
+  tags_attributes.values.each do |tag_attribute|
+    tag = Tag.find_or_create_by(tag_attribute)
+    self.tags << tag
+  end
+end
 
 end

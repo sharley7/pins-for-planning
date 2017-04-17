@@ -1,0 +1,6 @@
+<%= @pin.title %>
+<%= @pin.description %>
+<%= link_to image_tag(@pin.image.url(:medium)), @pin.image.url %>
+<% @pin.tags.each do | tag | %>
+<%= tag.name %>
+<% end %>

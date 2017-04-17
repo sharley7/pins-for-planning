@@ -6,6 +6,12 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.new(pin_params)
+
+    if @pin.save
+      redirect_to @pin
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -15,7 +21,7 @@ class PinsController < ApplicationController
   private
 
   def pin_params
-    params.require(:pin).permit(:title, :description, :image, :tags_attributes)
+    params.require(:pin).permit(:title, :description, :image, :user_id, tag_ids:[], tags_attributes:[:name])
   end
 
 end
