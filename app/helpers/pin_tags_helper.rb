@@ -1,0 +1,2 @@
+module PinTagsHelper
+end

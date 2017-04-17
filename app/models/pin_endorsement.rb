@@ -1,0 +1,2 @@
+class PinEndorsement < ApplicationRecord
+end

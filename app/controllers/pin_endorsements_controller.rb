@@ -1,0 +1,2 @@
+class PinEndorsementsController < ApplicationController
+end

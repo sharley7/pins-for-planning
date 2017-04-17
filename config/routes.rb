@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :users
+  resources :pins
+  resources :pin_tags
+  resources :pin_endorsements
+  resources :comments
+  resources :boards
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
