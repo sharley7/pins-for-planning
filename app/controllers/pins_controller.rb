@@ -10,11 +10,12 @@ class PinsController < ApplicationController
 
   def show
     @pin = Pin.find_by(id: params[:id])
-  end 
+  end
 
   private
 
   def pin_params
+    params.require(:pin).permit(:title, :description, :image, :tags_attributes)
   end
 
 end

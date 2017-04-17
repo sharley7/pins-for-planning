@@ -1,0 +1,35 @@
+<%= form_for @pin, html: { multipart: true } do |f| %>
+  <% if @pin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @pin.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+    <%= f.label :image %> <br>
+    <%= f.file_field :image %><br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+    Tags:
+
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+    <%= f.fields_for :tags, @pin.tags.build do | tags_fields| %>
+     <%= tags_fields.label :name %>
+     <%= tags_fields.text_field :name %>
+    <% end %>
+
+
+
+
+    <%= f.submit %>
+
+
+<% end %>
