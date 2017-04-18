@@ -1,5 +1,5 @@
 class PinEndorsementsController < ApplicationController
-
+before_action :logged_in?
   def new
     @pin_endorsement = PinEndorsement.new
   end

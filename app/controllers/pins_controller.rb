@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-
+before_action :check_permission, except: [:index, :show]
   def new
     @pin = Pin.new
   end
@@ -42,7 +42,7 @@ class PinsController < ApplicationController
   def destroy
      @pin= Pin.find_by(id: params[:id])
      @pin.destroy
-     redirect_to pins_path 
+     redirect_to pins_path
   end
 
 
@@ -51,5 +51,10 @@ class PinsController < ApplicationController
   def pin_params
     params.require(:pin).permit(:title, :description, :image, :user_id, tag_ids:[], tags_attributes:[:name])
   end
+
+  def check_permission
+    redirect_to '/' if !current_user
+    end
+
 
 end
