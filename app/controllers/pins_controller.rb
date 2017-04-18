@@ -14,6 +14,14 @@ class PinsController < ApplicationController
     end
   end
 
+  def index
+   if params[:user_id]
+     @pins = User.find(params[:user_id]).pins
+    else
+     @pins = Pin.all
+    end
+  end
+
   def show
     @pin = Pin.find_by(id: params[:id])
   end

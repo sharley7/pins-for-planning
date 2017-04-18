@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
   resources :tags
   resources :users
+
+  resources :users, only: [:show] do
+     # nested resource for posts
+     resources :pins, only: [:show, :index]
+   end
+
   resources :pins
   resources :pin_tags
   resources :pin_endorsements
   resources :comments
   resources :boards
-  resources :sessions 
+  resources :sessions
+
   root 'static#index'
   get '/auth/facebook/callback' => 'sessions#create'
 
