@@ -1,8 +1,11 @@
+<div class="row">
+  <div class="col-sm-4 pin">
+
 <%= @pin.title %>
-<%= @pin.description %>
-<%= link_to image_tag(@pin.image.url(:medium)), @pin.image.url %>
-<% @pin.tags.each do | tag | %>
-<%= tag.name %>
+<br /><%= link_to image_tag(@pin.image.url(:medium)), @pin.image.url %>
+<br /><%= @pin.description %>
+<br /></btr><% @pin.tags.each do | tag | %>
+<br /><%= tag.name %>
 <% end %>
 
 <%= form_for @pin.pin_endorsements.build do | f |  %>
@@ -39,3 +42,6 @@
 
   <%= f.submit %>
 <% end %>
+
+  </div>
+</div>
