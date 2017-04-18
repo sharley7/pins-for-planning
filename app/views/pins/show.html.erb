@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-md-3 pin">
+    <div id="push-pin">
+<%= image_tag("push_pin.png") %>
+      </div>
 
 <h1><%= @pin.title %></h1>
-<hr id="less-padding"/>
+<hr class="less-padding"/>
 <%= link_to image_tag(@pin.image.url), @pin.image.url %>
 <p>
 <%= @pin.description %>
@@ -20,28 +23,31 @@
 
 <%= @pin.pin_endorsements.count %>
 
-<hr />
+
+
+<h2>Discussion</h2>
+
+<hr class="less-padding" />
 <% @pin.comments.each do | comment |%>
 <%= comment.content %>
 <%= link_to comment.user.username, user_path(comment.user) %>
 <% end %>
 
-<br />
-<h3>Join the discussion</h3>
-<hr />
+
 <%= form_for @pin.comments.build do |f| %>
-  <%= f.label :content %>
-  <%= f.text_area :content %><br />
+  <%= f.text_area :content, placeholder: "Your comment", class: "form-control"%><br />
   <%= f.hidden_field :pin_id, value: @pin.id %>
   <% if logged_in? %>
-  You are posting as <%= current_user.username %>.
+  <span id="comment-box-text">
+You are posting as <div class="strong">
+<%= current_user.username %>.</div></span>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <% else %>
   <%= f.fields_for :user, @pin.users.build do |user| %>
    <%= user.text_field :username %>
     <%= user.text_field :email %>
      <%= user.text_field :password %>
- <% end %>
+  <% end %>
  <% end %>
 
   <%= f.submit %>

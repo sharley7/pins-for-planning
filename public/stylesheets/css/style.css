@@ -2,8 +2,8 @@
 .pin {
   background-color: #fff;
   margin: 2%;
-  padding: 2%;
-  border: 2px solid #d3d3d3;
+  padding: 0 1.5% 1.5% 1.5%;
+  border: 1px solid #d3d3d3;
   box-shadow: 3px 3px 5px #888888;
 }
 
@@ -24,12 +24,12 @@
    line-height: 1.5em;
 }
 
-.pin ul {
+ .pin ul {
   list-style: none;
   padding-left: 0;
 }
 
-.pin li {
+ .pin ul li {
   display: inline-block;
   background-color: #000;
   font-weight: bolder;
@@ -37,7 +37,48 @@
   padding: 1% 2.5%;
 }
 
-#less-padding {
+.pin h2 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.pin .less-padding {
   padding-bottom:0;
   margin-top:0;
+}
+
+.pin .form-control{
+  padding-bottom: 0;
+}
+
+.pin #comment-box-text {
+  width: 100%
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.pin .strong {
+  font-weight: bolder;
+}
+
+.pin #push-pin {
+  top: -10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 30px;
+}
+
+/*///////////// Background /////////////*/
+body {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: none;
+}
+
+.full {
+  background: url('/assets/cork-board.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
