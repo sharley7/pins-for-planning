@@ -4,3 +4,30 @@
 <% @pin.tags.each do | tag | %>
 <%= tag.name %>
 <% end %>
+
+<hr />
+<% @pin.comments.each do | comment |%>
+<%= comment.content %>
+<%= link_to comment.user.username, user_path(comment.user) %>
+<% end %>
+
+<br />
+<h3>Join the discussion</h3>
+<hr />
+<%= form_for @pin.comments.build do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %><br />
+  <%= f.hidden_field :pin_id, value: @pin.id %>
+  <% if logged_in? %>
+  You are posting as <%= current_user.username %>.
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <% else %>
+  <%= f.fields_for :user, @pin.users.build do |user| %>
+   <%= user.text_field :username %>
+    <%= user.text_field :email %>
+     <%= user.text_field :password %>
+ <% end %>
+ <% end %>
+
+  <%= f.submit %>
+<% end %>
