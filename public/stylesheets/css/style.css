@@ -1,6 +1,43 @@
+/*///////////// Pin Styles /////////////////*/
 .pin {
   background-color: #fff;
   margin: 2%;
-  padding: 1%;
-  border: 2px solid #696969;
+  padding: 2%;
+  border: 2px solid #d3d3d3;
+  box-shadow: 3px 3px 5px #888888;
+}
+
+.pin h1 {
+  font-size: 2em;
+  font-weight: bolder;
+  padding: 0;
+  margin: 0;
+}
+
+.pin img {
+  width: 100%;
+}
+
+.pin p {
+   margin-top: 5%;
+   margin-bottom: 1%;
+   line-height: 1.5em;
+}
+
+.pin ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.pin li {
+  display: inline-block;
+  background-color: #000;
+  font-weight: bolder;
+  color: #fff;
+  padding: 1% 2.5%;
+}
+
+#less-padding {
+  padding-bottom:0;
+  margin-top:0;
 }

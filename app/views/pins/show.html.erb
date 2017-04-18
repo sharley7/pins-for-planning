@@ -1,13 +1,17 @@
 <div class="row">
-  <div class="col-sm-4 pin">
+  <div class="col-md-3 pin">
 
-<%= @pin.title %>
-<br /><%= link_to image_tag(@pin.image.url(:medium)), @pin.image.url %>
-<br /><%= @pin.description %>
-<br /></btr><% @pin.tags.each do | tag | %>
-<br /><%= tag.name %>
+<h1><%= @pin.title %></h1>
+<hr id="less-padding"/>
+<%= link_to image_tag(@pin.image.url), @pin.image.url %>
+<p>
+<%= @pin.description %>
+</p>
+<ul>
+<% @pin.tags.each do | tag | %>
+<li><%= tag.name %></li>
 <% end %>
-
+</ul>
 <%= form_for @pin.pin_endorsements.build do | f |  %>
 <%= f.hidden_field :user_id, value: @pin.user.id %>
 <%= f.hidden_field :pin_id, value: @pin.id %>
