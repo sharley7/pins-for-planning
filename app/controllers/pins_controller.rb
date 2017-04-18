@@ -54,7 +54,7 @@ before_action :check_permission, except: [:index, :show]
 
   def check_permission
     redirect_to '/' if !current_user
-    end
+  end
 
 
 end
