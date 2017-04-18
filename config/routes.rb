@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :sessions
 
   root 'static#index'
-  get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/facebook/callback' => 'sessions#create_facebook'
+  get '/login', to: 'sessions#new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
