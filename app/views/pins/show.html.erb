@@ -5,6 +5,14 @@
 <%= tag.name %>
 <% end %>
 
+<%= form_for @pin.pin_endorsements.build do | f |  %>
+<%= f.hidden_field :user_id, value: @pin.user.id %>
+<%= f.hidden_field :pin_id, value: @pin.id %>
+<%= f.submit 'Vote' %>
+<% end %>
+
+<%= @pin.pin_endorsements.count %>
+
 <hr />
 <% @pin.comments.each do | comment |%>
 <%= comment.content %>
