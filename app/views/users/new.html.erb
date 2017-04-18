@@ -1,4 +1,9 @@
+
+
 <%= form_for @user do | f | %>
+
+<%= render '/layouts/user_form_errors', locals: {user: @user} %>
+
 <%= f.label :username %>
 <%= f.text_field :username %>
 <br />

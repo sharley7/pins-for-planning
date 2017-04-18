@@ -1,16 +1,7 @@
 <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
 
-<% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
-      </h2>
+<%= render '/layouts/user_form_errors', locals: {user: @user} %>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      <% end %>
 <%= f.label :username %>
 <%= f.text_field :username %>
 <%= f.label :password %>
