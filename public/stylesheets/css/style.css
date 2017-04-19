@@ -211,16 +211,16 @@ button.accordion.active, button.accordion:hover {
 }
 
 
-ul.comments {
+ #pin ul.comments {
   display: block;
   list-style-type: circle;
 }
 
- ul.comments li {
+ #pin ul.comments li {
    font-weight: normal;
    width: 100%;
    color: #000000;
-   background: transparent;
+   background: #ffffff;
 }
 
 hr.dashed {
@@ -285,7 +285,11 @@ div.flash-note img {
 
 div.extra-padding {
   padding: 4%;
-  margin-top: 5%;
+  margin-top: 2%;
+}
+
+.more-top {
+  margin-top: 3%;
 }
 
 .vtext p {
