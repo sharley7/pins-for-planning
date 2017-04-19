@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:user][:username].downcase)
-    if user && user.authenticate(params[:user][:password])
-      if user != nil
-        log_in user
+    if @user && @user.authenticate(params[:user][:password])
+      if @user != nil
+        log_in @user
         redirect_to @user
       else
         render 'new'
@@ -31,5 +31,7 @@ def create_facebook
  def auth
    request.env['omniauth.auth']
  end
+
+
 
  end

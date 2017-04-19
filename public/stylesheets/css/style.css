@@ -1,35 +1,35 @@
-/*///////////// Pin Styles /////////////////*/
-.pin {
+/*///////////// Pin Index Styles /////////////////*/
+#pin {
   background-color: #fff;
   margin: 2%;
   padding: 1% 2% 2% 2%;
   border: 1px solid #d3d3d3;
-  box-shadow: 3px 3px 5px #888888;
+  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
 }
 
-.pin h1 {
-  font-size: 2em;
+#pin h1 {
+  font-size: 1.8em;
   font-weight: bolder;
   padding: 0;
   margin: 0;
 }
 
-.pin img {
+#pin img {
   width: 100%;
 }
 
-.pin p {
+#pin p {
    margin-top: 5%;
    margin-bottom: 1%;
    line-height: 1.5em;
 }
 
- .pin ul {
+ #pin ul {
   list-style: none;
   padding-left: 0;
 }
 
- .pin ul li {
+ #pin ul li {
   display: inline-block;
   background-color: #f26466;
   font-weight: bolder;
@@ -37,34 +37,34 @@
   padding: 1% 2.5%;
 }
 
-.pin h2 {
+#pin h2 {
   font-size: 1em;
   font-weight: bold;
   padding: 0;
   margin: 0;
 }
 
-.pin .less-padding {
-  padding-bottom:0;
-  margin-top:0;
+hr.less-padding {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.pin .form-control{
+#pin .form-control{
   padding-bottom: 0;
 }
 
-p#comment-box-text {
+p #comment-box-text {
   width: 100%;
   font-size: 0.9em;
   margin: 0;
 }
 
-.pin .strong {
+div.pin .strong {
   font-weight: bolder;
   display: inline-block;
 }
 
-.pin #push-pin {
+#push-pin {
   top: -10px;
   margin-right: auto;
   margin-left: auto;
@@ -93,7 +93,6 @@ body {
  background: url('/assets/wood-texture.jpg');
  background-color: @navbar-inverse-bg;
  border-color: #6D3F19;
-
 }
 .navbar-inverse .navbar-brand {
   color: #000000;
@@ -187,8 +186,8 @@ button.accordion.active, button.accordion:hover {
   margin-top: 1%;
 }
 
-.padding-top {
-  padding-top: 2.5%;
+.padding-endorse {
+  padding: 2.5% 1.5% 1.5% 1.5%;
 }
 
 .vote {
@@ -198,17 +197,17 @@ button.accordion.active, button.accordion:hover {
   padding: 0;
   font-size: 1.5em;
   margin: 0;
+  display: inline-block;
 }
 
 #votemod {
   background: #ffffff;
-  font-weight: bolder;
+  font-weight: normal;
   color: #a9a9a9;
   font-size: .9em;
-  margin: 0;
-  border: 0;
-  letter-spacing: 2px;
   text-align: left;
+  display: inline-block;
+  letter-spacing: 1.2px;
 }
 
 
@@ -247,4 +246,62 @@ hr.dashed {
 
 .read-more-button {
   margin: 2% 0%;
+}
+
+div.float-left {
+  float: left;
+}
+
+/*//////////// Flash Note ////////////*/
+
+.flash-note {
+    background: #FFFFA5;
+    border: 1px solid #d3d3d3;
+    max-width: 300px;
+    min-height: 160px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1%;
+    font-size: 1em;
+    letter-spacing: 1.5px;
+    font-weight: bolder;
+    text-align: middle;
+    box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+}
+
+div.flash-note img {
+  top: -10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 30px;
+  display: inline-block;
+  align: middle;
+}
+
+ div.flash-note img#reminder {
+  width: 40px;
+  display: inline-block;
+}
+
+div.extra-padding {
+  padding: 4%;
+  margin-top: 5%;
+}
+
+.vtext p {
+    display: inline;
+    text-align: middle;
+}
+
+.error {
+  align: top;
+}
+
+.error h4  {
+  font-weight: bolder;
+  font-size: 1.1em;
+}
+
+.error ul {
+  font-size: .9em;
 }

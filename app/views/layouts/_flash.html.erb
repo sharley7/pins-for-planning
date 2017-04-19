@@ -1,3 +1,18 @@
-<% flash.each do |name, msg| %>
- <%= content_tag :div, msg, class: name %>
+<% if flash.empty? == false %>
+<div class="flash-note">
+  <div id="push-pin">
+    <%= image_tag("push_pin.png") %>
+  </div>
+  <div class="row extra-padding">
+    <div class="col-xs-2 ">
+      <%= image_tag("reminder.png", id: 'reminder') %>
+    </div>
+    <div class="col-xs-9 col-xs-offset-1">
+    <% flash.each do |name, msg| %>
+     <%= content_tag :div, msg, class: 'vtext' %>
+    <% end %>
+  </div>
+ </div>
+</div>
+<% else %>
 <% end %>

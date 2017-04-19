@@ -1,5 +1,6 @@
 class PinEndorsementsController < ApplicationController
 before_action :logged_in?
+
   def new
     @pin_endorsement = PinEndorsement.new
   end
@@ -10,6 +11,7 @@ before_action :logged_in?
     if @pin_endorsement.save
       redirect_to pin_path(@pin_endorsement.pin)
     else
+      flash[:notice] = "You cannot perform that action."
       redirect_to pin_path(@pin_endorsement.pin)
     end
   end
