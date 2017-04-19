@@ -1,0 +1,79 @@
+<div class="col-sm-3 pin col-centered" id="pin">
+  <!--- push pin image -->
+  <div id="push-pin">
+    <%= image_tag("push_pin.png") %>
+  </div>
+  <!-- end push pin image -->
+
+  <h1><%= pin.title %></h1>
+  <hr class="less-padding"/>
+  <%= link_to image_tag(pin.image.url), pin.image.url %>
+  <!-- endorsement box -->
+  <div class="row more-padding">
+    <div class="col-xs-12 endorse">
+      <div class="float-left">
+        <%= form_for pin.pin_endorsements.build do | f |  %>
+        <%= f.hidden_field :user_id, value: pin.user.id %>
+        <%= f.hidden_field :pin_id, value: pin.id %>
+        <%= f.submit '✔', class: 'vote' %>
+        <% end %>
+      </div>
+      <div class="endorse padding-endorse float-left">
+        <div id="votemod">
+          <%= pluralize(pin.pin_endorsements.count, "endorsement") %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- endorsement box end -->
+  <div class="row">
+    <div class="col-xs-12">
+      <p><%= truncate(pin.description, length: 60 ) %></p>
+        <div class="read-more-button">
+          <button class="comment-button"> more</button>
+        </div>
+        <hr class="less-padding" />
+          <button class="accordion"><h2><%= pluralize(pin.tags.count, "Tag") %> +</h2> </button>
+           <!-- accordion -->
+            <div class="panel">
+              <hr class="less-padding" />
+                <ul>
+                  <% pin.tags.each do | tag | %>
+                  <li><%= tag.name %></li>
+                  <% end %>
+                </ul>
+            </div>
+          <button class="accordion"><h2><%= pluralize(pin.comments.count, "Comment") %> +</h2></button>
+            <div class="panel">
+              <hr class="less-padding" />
+                <ul class="comments"><% pin.comments.each do | comment |%>
+                  <li>
+                  <%= comment.content %>
+                  <br /><%= link_to comment.user.username, user_path(comment.user) %></li>
+                  <hr class="dashed less-padding"/>
+                  <% end %>
+                </ul>
+                  <%= form_for pin.comments.build do |f| %>
+                    <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
+                    <%= f.hidden_field :pin_id, value: pin.id %>
+                    <% if logged_in? %>
+                    <p id="comment-box-text">
+                    You are posting as <div class="strong">
+                    <%= current_user.username %>.</div></p>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <% else %>
+                    <%= f.fields_for :user, pin.users.build do |user| %>
+                     <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
+                    <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>
+                    <%= user.text_field :password, placeholder: "password", class: "form-control comment-input" %>
+                    <% end %>
+                  <% end %>
+
+                    <%= f.submit "comment", class: "comment-button" %>
+                  <% end %>
+                </ul>
+            </div>
+          </div>
+        </div>
+</div>

@@ -9,13 +9,13 @@ before_action :logged_in?
     @pin_endorsement = PinEndorsement.new(pin_endorsement_params)
 
     if @pin_endorsement.save
-      redirect_to pin_path(@pin_endorsement.pin)
+      redirect_to :back
     elsif @pin_endorsement.save == false && current_user
       flash[:notice] = "You can only vote once for each pin."
-      redirect_to pin_path(@pin_endorsement.pin)
+      redirect_to :back
     else
       flash[:notice] = "You must be logged in to vote."
-      redirect_to pin_path(@pin_endorsement.pin)
+      redirect_to :back
     end
   end
 
