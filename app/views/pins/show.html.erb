@@ -15,7 +15,7 @@
     <%= f.submit '✔', class: 'vote' %>
     <% end %>
   </div>
-  <div class="col-lg-6 endorse padding-top">
+  <div class="col-lg-7 endorse padding-top">
     <div id="votemod">
         <%=
     pluralize(@pin.pin_endorsements.count, "endorsement") %>
@@ -23,8 +23,10 @@
 </div>
 </div>
 <p>
-  <%= truncate(@pin.description, length: 50 ) { link_to "Read more", pin_path(@pin) }%>
-
+  <%= truncate(@pin.description, length: 50 ) %>
+<div class="read-more-button">
+  <button class="comment-button"> more</button>
+</div>
 </p>
 
 <hr class="less-padding" />
@@ -51,29 +53,31 @@
 
 <hr class="less-padding" />
 
-<% @pin.comments.each do | comment |%>
+<ul class="comments"><% @pin.comments.each do | comment |%>
+<li>
 <%= comment.content %>
-<%= link_to comment.user.username, user_path(comment.user) %>
+<br /><%= link_to comment.user.username, user_path(comment.user) %></li>
+<hr class="dashed less-padding"/>
 <% end %>
-
+</ul>
 
 <%= form_for @pin.comments.build do |f| %>
-  <%= f.text_area :content, placeholder: "Your comment", class: "form-control"%><br />
+  <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
   <%= f.hidden_field :pin_id, value: @pin.id %>
   <% if logged_in? %>
-  <span id="comment-box-text">
+  <p id="comment-box-text">
 You are posting as <div class="strong">
-<%= current_user.username %>.</div></span>
+<%= current_user.username %>.</div></p>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <% else %>
   <%= f.fields_for :user, @pin.users.build do |user| %>
-   <%= user.text_field :username %>
-    <%= user.text_field :email %>
-     <%= user.text_field :password %>
+   <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
+    <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>
+     <%= user.text_field :password, placeholder: "password", class: "form-control comment-input" %>
   <% end %>
  <% end %>
 
-  <%= f.submit %>
+  <%= f.submit "comment", class: "comment-button" %>
 <% end %>
 
    </div>

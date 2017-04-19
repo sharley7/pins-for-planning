@@ -2,7 +2,7 @@
 .pin {
   background-color: #fff;
   margin: 2%;
-  padding: 0 1.5% 1.5% 1.5%;
+  padding: 1% 2% 2% 2%;
   border: 1px solid #d3d3d3;
   box-shadow: 3px 3px 5px #888888;
 }
@@ -31,7 +31,7 @@
 
  .pin ul li {
   display: inline-block;
-  background-color: #000;
+  background-color: #f26466;
   font-weight: bolder;
   color: #fff;
   padding: 1% 2.5%;
@@ -53,14 +53,15 @@
   padding-bottom: 0;
 }
 
-.pin #comment-box-text {
-  width: 100%
+p#comment-box-text {
+  width: 100%;
   font-size: 0.9em;
   margin: 0;
 }
 
 .pin .strong {
   font-weight: bolder;
+  display: inline-block;
 }
 
 .pin #push-pin {
@@ -190,7 +191,6 @@ button.accordion.active, button.accordion:hover {
   padding-top: 2.5%;
 }
 
-
 .vote {
   background: #ffffff;
   color: #f26466;
@@ -204,9 +204,47 @@ button.accordion.active, button.accordion:hover {
   background: #ffffff;
   font-weight: bolder;
   color: #a9a9a9;
-  font-size: .8em;
+  font-size: .9em;
   margin: 0;
   border: 0;
   letter-spacing: 2px;
   text-align: left;
+}
+
+
+ul.comments {
+  display: block;
+  list-style-type: circle;
+}
+
+ ul.comments li {
+   font-weight: normal;
+   width: 100%;
+   color: #000000;
+   background: transparent;
+}
+
+hr.dashed {
+  border-top: 1px dotted #ccc;
+}
+
+.comment-input {
+ width: 100%;
+ border: 0;
+ box-shadow: none;
+}
+
+.comment-button {
+  width: 100%;
+  background-color: #f26466;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: normal;
+  border: 0;
+  letter-spacing: 2px;
+  padding: 4% 2%;
+}
+
+.read-more-button {
+  margin: 2% 0%;
 }
