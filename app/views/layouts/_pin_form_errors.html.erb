@@ -1,4 +1,4 @@
-<% if @user.errors.any? %>
+<% if @pin.errors.any? %>
 <div class="flash-note">
   <div id="push-pin">
     <%= image_tag("push_pin.png") %>
@@ -8,9 +8,9 @@
       <%= image_tag("reminder.png", id: 'reminder') %>
     </div>
   <div class="col-xs-9 col-xs-offset-1 error">
-    <h4>Please fix the following <%= pluralize(@user.errors.count, "error") %>:</h4>
+    <h4>Please fix the following <%= pluralize(@pin.errors.count, "error") %>:</h4>
   <ul>
-   <% @user.errors.full_messages.each do |msg| %>
+   <% @pin.errors.full_messages.each do |msg| %>
     <li> - <%= msg %></li>
    <% end %>
   </ul>

@@ -321,3 +321,8 @@ div.extra-padding {
     /* inline-block space fix */
     margin-right:-4px;
 }
+
+.error ul {
+  list-style: none;
+  padding-left: 0;
+}

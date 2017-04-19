@@ -4,6 +4,14 @@ class Pin < ApplicationRecord
   has_many :pin_tags
   has_many :tags, through: :pin_tags
   has_many :pin_endorsements
+  validates :title, presence: true, length: { in: 3..55 }
+  validates :image_file_name, presence: true
+  validates :description, length: { in: 10..200 }
+
+
+
+
+
 
   accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes['title'].blank? }
 
