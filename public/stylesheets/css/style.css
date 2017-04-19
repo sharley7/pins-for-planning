@@ -185,12 +185,11 @@ button.accordion.active, button.accordion:hover {
 .endorse {
   margin-top: 1%;
 }
-.e-right {
-  padding-left: 0;
+
+.padding-top {
+  padding-top: 2.5%;
 }
-.e-left {
-  padding-right: 0;
-}
+
 
 .vote {
   background: #ffffff;
@@ -203,11 +202,9 @@ button.accordion.active, button.accordion:hover {
 
 #votemod {
   background: #ffffff;
-  font-weight: lighter;
+  font-weight: bolder;
   color: #a9a9a9;
-  padding-top: 2.3%;
-  padding-left: 0;
-  font-size: 1em;
+  font-size: .8em;
   margin: 0;
   border: 0;
   letter-spacing: 2px;
