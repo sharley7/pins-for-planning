@@ -23,7 +23,7 @@
 </div>
 </div>
 <p>
-  <%= truncate(@pin.description, length: 50 ) %>
+  <%= truncate(@pin.description, length: 60 ) %>
 <div class="read-more-button">
   <button class="comment-button"> more</button>
 </div>
@@ -33,7 +33,8 @@
 
 
 
-<button class="accordion"><h2>Tags +</h2> </button>
+<button class="accordion"><h2><%=
+pluralize(@pin.tags.count, "Tag") %> +</h2> </button>
 <div class="panel">
 
 <hr class="less-padding" />
@@ -48,7 +49,8 @@
 </div>
 
 
-<button class="accordion"><h2>Discussion +</h2> </button>
+<button class="accordion"><h2><%=
+pluralize(@pin.comments.count, "Comment") %> +</h2> </button>
 <div class="panel">
 
 <hr class="less-padding" />
