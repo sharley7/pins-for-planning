@@ -10,8 +10,11 @@ before_action :logged_in?
 
     if @pin_endorsement.save
       redirect_to pin_path(@pin_endorsement.pin)
+    elsif @pin_endorsement.save == false && current_user
+      flash[:notice] = "You can only vote once for each pin."
+      redirect_to pin_path(@pin_endorsement.pin)
     else
-      flash[:notice] = "You cannot perform that action."
+      flash[:notice] = "You must be logged in to vote."
       redirect_to pin_path(@pin_endorsement.pin)
     end
   end
