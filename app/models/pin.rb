@@ -17,4 +17,6 @@ class Pin < ApplicationRecord
   end
 end
 
+
+
 end

@@ -7,28 +7,48 @@
 <h1><%= @pin.title %></h1>
 <hr class="less-padding"/>
 <%= link_to image_tag(@pin.image.url), @pin.image.url %>
+<div class="row no-gutters">
+  <div class="col-lg-2 endorse e-left">
+    <%= form_for @pin.pin_endorsements.build do | f |  %>
+    <%= f.hidden_field :user_id, value: @pin.user.id %>
+    <%= f.hidden_field :pin_id, value: @pin.id %>
+    <%= f.submit '✔', class: 'vote' %>
+    <% end %>
+  </div>
+  <div class="col-lg-10 endorse e-right">
+    <div id="votemod"><%=
+    pluralize(@pin.pin_endorsements.count, "endorsement") %></div>
+  </div>
+</div>
 <p>
   <%= truncate(@pin.description, length: 50 ) { link_to "Read more", pin_path(@pin) }%>
 
 </p>
+
+
+
+
+
+<button class="accordion"><h2>Tags +</h2> </button>
+<div class="panel">
+
+<hr class="less-padding" />
+
 <ul>
 <% @pin.tags.each do | tag | %>
 <li><%= tag.name %></li>
 <% end %>
 </ul>
-<%= form_for @pin.pin_endorsements.build do | f |  %>
-<%= f.hidden_field :user_id, value: @pin.user.id %>
-<%= f.hidden_field :pin_id, value: @pin.id %>
-<%= f.submit 'Vote' %>
-<% end %>
-
-<%= @pin.pin_endorsements.count %>
 
 
+</div>
 
-<h2>Discussion</h2>
+
+<button class="accordion"><h2>Discussion +</h2> </button>
+<div class="panel">
 
 <hr class="less-padding" />
+
 <% @pin.comments.each do | comment |%>
 <%= comment.content %>
 <%= link_to comment.user.username, user_path(comment.user) %>
@@ -53,6 +73,8 @@ You are posting as <div class="strong">
 
   <%= f.submit %>
 <% end %>
+
+   </div>
 
   </div>
 </div>

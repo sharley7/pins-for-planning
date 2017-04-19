@@ -40,6 +40,8 @@
 .pin h2 {
   font-size: 1em;
   font-weight: bold;
+  padding: 0;
+  margin: 0;
 }
 
 .pin .less-padding {
@@ -156,4 +158,58 @@ body {
     color: #f26466;
     background-color: #ffffff;
   }
+}
+
+div.panel {
+    padding: 0 1%;
+    display: none;
+    background-color: #ffffff;
+}
+
+button.accordion {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1%;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: .9em;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ffffff;
+}
+
+.endorse {
+  margin-top: 1%;
+}
+.e-right {
+  padding-left: 0;
+}
+.e-left {
+  padding-right: 0;
+}
+
+.vote {
+  background: #ffffff;
+  color: #f26466;
+  border: 0;
+  padding: 0;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+#votemod {
+  background: #ffffff;
+  font-weight: lighter;
+  color: #a9a9a9;
+  padding-top: 2.3%;
+  padding-left: 0;
+  font-size: 1em;
+  margin: 0;
+  border: 0;
+  letter-spacing: 2px;
+  text-align: left;
 }
