@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :boards
   resources :sessions
-
+  resources :admin_request
   root 'static#index'
   get '/auth/facebook/callback' => 'sessions#create_facebook'
   get '/login', to: 'sessions#new'

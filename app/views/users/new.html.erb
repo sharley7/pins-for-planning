@@ -1,5 +1,3 @@
-
-
 <%= form_for @user do | f | %>
 
 <%= render '/layouts/user_form_errors', locals: {user: @user} %>
@@ -13,6 +11,12 @@
 <%= f.label :password %>
 <%= f.password_field :password %>
 <br />
+
+<%= f.label :admin_request, "Check box if you are an employee and want to request an administrative account." %>
+<%= f.check_box :admin_request, {}, "submitted", "nil" %>
+
+
+  <br />
 <%= f.submit %>
 
 <% end %>
