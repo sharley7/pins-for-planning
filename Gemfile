@@ -51,3 +51,4 @@ end
 gem 'omniauth', '~> 1.6', '>= 1.6.1'
 gem 'omniauth-facebook', '~> 4.0'
 gem "figaro"
+gem 'cancancan', '~> 1.10'
