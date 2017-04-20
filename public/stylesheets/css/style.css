@@ -428,3 +428,15 @@ h3.pin-title {
   letter-spacing: 2px;
   padding: 2% 1%;
 }
+
+#single-pin ul.comments {
+ display: block;
+ list-style-type: circle;
+}
+
+#single-pin ul.comments li {
+  font-weight: normal;
+  width: 100%;
+  color: #000000;
+  background: #ffffff;
+}
