@@ -1,22 +1,48 @@
+<div class="row row-centered">
+  <div class="col full-width" id="top-pin">
+    <div class="row">
+      <div class ="col col-centered full-width">
+        <div id="push-pin">
+          <%= image_tag("push_pin.png") %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class ="col col-centered full-width col-padding">
+
+<h2>Create an account</h2>
+<hr  / />
 <%= form_for @user do | f | %>
+
+
 
 <%= render '/layouts/user_form_errors', locals: {user: @user} %>
 
-<%= f.label :username %>
-<%= f.text_field :username %>
-<br />
-<%= f.label :email %>
-<%= f.text_field :email %>
-<br />
-<%= f.label :password %>
-<%= f.password_field :password %>
-<br />
+<p>
+<%= f.text_field :username, placeholder: 'username', class: 'form-control input-lg"' %>
+</p>
+<p>
+<%= f.text_field :email, placeholder: 'email', class: 'form-control input-lg"' %>
+</p>
+<p>
 
-<%= f.label :admin_request, "Check box if you are an employee and want to request an administrative account." %>
+
+<%= f.password_field :password, placeholder: 'password', class: 'form-control input-lg"' %>
+</p>
+
 <%= f.check_box :admin_request, {}, "submitted", "nil" %>
+<%= f.label :admin_request, "Check box to request an admin account." %>
 
 
+<br />
   <br />
-<%= f.submit %>
+<%= f.submit "Join", class: "comment-button" %>
 
 <% end %>
+
+
+
+</div>
+</div>
+</div>
+</div>

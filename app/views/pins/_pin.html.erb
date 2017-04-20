@@ -1,4 +1,6 @@
-<div class="col-sm-3 pin col-centered" id="pin">
+
+
+<div class="col-md-3 pin col-centered center-block" id="pin">
   <!--- push pin image -->
   <div id="push-pin">
     <%= image_tag("push_pin.png") %>
@@ -8,7 +10,7 @@
   <h1><%= pin.title %></h1>
   <hr class="less-padding"/>
   <div class="image-container">
-  <%= link_to image_tag(pin.image.url), pin.image.url %>
+  <%= image_tag(pin.image.url) %>
     </div>
   <!-- endorsement box -->
   <div class="row more-padding">
@@ -35,7 +37,7 @@
     <div class="col-xs-12">
       <p><%= truncate(pin.description, length: 60 ) %></p>
         <div class="read-more-button">
-          <button class="comment-button"> more</button>
+          <%= link_to pin_path(pin) do %><button class="comment-button"> more</button><% end %>
         </div>
         <hr class="less-padding" />
           <button class="accordion"><h2><%= pluralize(pin.tags.count, "Tag") %> +</h2> </button>

@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
 
   load_and_authorize_resource
-  
+
   def new
     @pin = Pin.new
   end
@@ -45,6 +45,10 @@ class PinsController < ApplicationController
      @pin= Pin.find_by(id: params[:id])
      @pin.destroy
      redirect_to pins_path
+  end
+
+  def test
+    @pins = Pin.all
   end
 
 
