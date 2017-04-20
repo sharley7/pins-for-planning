@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   resources :comments
   resources :boards
   resources :sessions
-  resources :admin_request
+
   root 'static#index'
   get '/auth/facebook/callback' => 'sessions#create_facebook'
   get '/login', to: 'sessions#new'
+  get '/signup', to: 'users#new'  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
