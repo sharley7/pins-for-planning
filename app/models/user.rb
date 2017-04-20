@@ -12,6 +12,9 @@ class User < ApplicationRecord
                    uniqueness: { case_sensitive: false }
  validates :password, presence: true, length: { minimum: 6 }
 
+ def role?
+   self.role = role.to_sym
+ end
 
 
 

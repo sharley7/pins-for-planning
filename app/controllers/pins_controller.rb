@@ -1,5 +1,7 @@
 class PinsController < ApplicationController
-before_action :check_permission, except: [:index, :show]
+
+  load_and_authorize_resource
+  
   def new
     @pin = Pin.new
   end
@@ -52,9 +54,7 @@ before_action :check_permission, except: [:index, :show]
     params.require(:pin).permit(:title, :description, :image, :user_id, tag_ids:[], tags_attributes:[:name])
   end
 
-  def check_permission
-    redirect_to '/' if !current_user
-  end
+
 
 
 end
