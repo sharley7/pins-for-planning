@@ -7,7 +7,9 @@
 
   <h1><%= pin.title %></h1>
   <hr class="less-padding"/>
+  <div class="image-container">
   <%= link_to image_tag(pin.image.url), pin.image.url %>
+    </div>
   <!-- endorsement box -->
   <div class="row more-padding">
     <div class="col-xs-12 endorse">
@@ -62,7 +64,7 @@
                     You are posting as <div class="strong">
                     <%= current_user.username %>.</div></p>
                     <%= f.hidden_field :user_id, value: current_user.id %>
-                    <% else %>
+                    <% elsif user = nil %>
                     <%= f.fields_for :user, pin.users.build do |user| %>
                      <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
                     <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :pins
   has_many :pin_endorsements
-
+  has_many :comments
 
   has_secure_password
 

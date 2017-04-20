@@ -5,6 +5,7 @@
   padding: 1% 2% 2% 2%;
   border: 1px solid #d3d3d3;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+  min-height: 580px;
 }
 
 #pin h1 {
@@ -14,8 +15,13 @@
   margin: 0;
 }
 
+.image-container {
+  min-height: 250px;
+}
+
 #pin img {
   width: 100%;
+
 }
 
 #pin p {
@@ -325,4 +331,28 @@ div.extra-padding {
 .error ul {
   list-style: none;
   padding-left: 0;
+}
+
+#top-pin {
+  background-color: #fff;
+  margin: 2%;
+  padding: 1% 2% 2% 2%;
+  border: 1px solid #d3d3d3;
+  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+  min-height: 250px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#top-pin #push-pin img {
+  top: -10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 30px;
+  display: inline-block;
+  align: middle;
+}
+
+.full-width {
+  width: 100%;
 }
