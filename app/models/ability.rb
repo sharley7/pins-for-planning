@@ -5,12 +5,15 @@ class Ability
 
     if user.nil?
       can :read, :all
+      can :create, User
     end
 
     if user != nil
-
+      can :read, :all
       can :manage, Pin, {user_id: user.id}
       can :manage, Comment, {user_id: user.id}
+      can :create, Tag
+
     end
 
     if user != nil && user.role == "admin"

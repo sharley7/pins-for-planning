@@ -15,7 +15,9 @@
     <div class="col-xs-12 endorse">
       <div class="float-left">
         <%= form_for pin.pin_endorsements.build do | f |  %>
-        <%= f.hidden_field :user_id, value: pin.user.id %>
+        <% if logged_in? %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <% end %>
         <%= f.hidden_field :pin_id, value: pin.id %>
         <%= f.submit '✔', class: 'vote' %>
         <% end %>
@@ -59,12 +61,12 @@
                   <%= form_for pin.comments.build do |f| %>
                     <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
                     <%= f.hidden_field :pin_id, value: pin.id %>
-                    <% if logged_in? %>
+                    <% if current_user %>
                     <p id="comment-box-text">
                     You are posting as <div class="strong">
                     <%= current_user.username %>.</div></p>
                     <%= f.hidden_field :user_id, value: current_user.id %>
-                    <% elsif user = nil %>
+                    <% elsif current_user = nil  %>
                     <%= f.fields_for :user, pin.users.build do |user| %>
                      <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
                     <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>

@@ -5,24 +5,26 @@
         <div id="push-pin">
           <%= image_tag("push_pin.png") %>
         </div>
-       </div>
-     </div>
-<% if current_user == nil || current_user.id != @user.id %>
-<h3><%=@user.username%>'s Profile</h3>
-  <% else %>
-  <h3>Welcome, <%= @user.username %></h3>
-  <% end %>
-  <hr />
-  <ul>
-    <li>
-      <%=@user.pins.count %> pins.
-    </li>
-    <li>
-      <%=@user.comments.count %> comments.
-    </li>
-    <li>
-      <%=@user.pin_endorsements.count %> endorsements.
-    </li>
-  </ul>
+      </div>
+    </div>
+        <div class="row">
+          <div class ="col col-centered full-width col-padding">
+
+
+        <% if current_user == nil || current_user.id != @user.id %>
+          <h3><%=@user.username%>'s Profile</h3>
+        <% else %>
+          <h3>Welcome, <%= @user.username %></h3>
+        <% end %>
+         <hr />
+         <ul>
+          <li><%=@user.pins.count %> <%= link_to 'pins', user_pins_path(@user) %>.</li>
+          <li><%=@user.comments.count %> comments.</li>
+          <li><%=@user.pin_endorsements.count %> endorsements.</li>
+        </ul>
+
+      </div>
+    </div>
   </div>
 </div>
+<%= render(@user.pins :partial => '/pins/pin')  %>
