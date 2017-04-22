@@ -1,0 +1,38 @@
+
+<div class="row row-centered">
+    <div class="col-md-offset-4 col-md-4" id="top-pin">
+    <div class="row">
+      <div class ="col col-centered full-width">
+        <div id="push-pin">
+          <%= image_tag("push_pin.png") %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class ="col col-centered full-width col-padding">
+
+
+<%= form_for @comment do |f| %>
+  <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
+  <%= f.hidden_field :pin_id, value: @comment.pin.id %>
+  <% if logged_in? %>
+  <p id="comment-box-text">
+  You are posting as <strong>
+  <%= current_user.username %>.</strong></p>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <% elsif current_user = nil  %>
+  <%= f.fields_for :user, pin.users.build do |user| %>
+   <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
+  <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>
+  <%= user.text_field :password, placeholder: "password", class: "form-control comment-input" %>
+  <% end %>
+<% end %>
+
+  <%= f.submit "comment", class: "comment-button-single" %>
+<% end %>
+
+
+</div>
+</div>
+</div>
+</div>

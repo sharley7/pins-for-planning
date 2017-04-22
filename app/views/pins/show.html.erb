@@ -59,6 +59,14 @@
         <li>
         <%= comment.content %>
         <br /><%= link_to comment.user.username, user_path(comment.user) %></li>
+        <% if current_user != nil %>
+           <% if current_user.id == comment.user.id %>
+        <li>
+          <%= link_to 'Edit', edit_comment_path(comment) %> |
+          <%= link_to "Delete", comment, method: :delete %>
+        </li>
+        <% end %>
+        <% end %>
         <hr class="dashed less-padding"/>
         <% end %>
       </ul>

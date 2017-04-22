@@ -9,6 +9,27 @@ class CommentsController < ApplicationController
     redirect_to :back
   end
 
+  def edit
+    @comment = Comment.find_by(id: params[:id])
+  end
+
+  def update
+    @comment = Comment.find_by(id: params[:id])
+    if @comment.update(comment_params)
+      flash[:notice] = "Your comment has been updated."
+      redirect_to pins_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @comment = Comment.find_by(id: params[:id])
+    @comment.destroy
+    flash[:notice] = "Your comment has been deleted."
+    redirect_to :back
+  end
+
 
 private
 
