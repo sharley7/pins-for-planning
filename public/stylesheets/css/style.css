@@ -442,3 +442,25 @@ h3.pin-title {
   color: #000000;
   background: #ffffff;
 }
+
+.slightly-smaller {
+  font-size: 0.8em;
+}
+
+ul.tag-block {
+ list-style: none;
+ padding-left: 0;
+}
+
+li.tag-block {
+ display: inline-block;
+ background-color: #f26466;
+ font-weight: bolder;
+ color: #fff;
+ padding: 1% 2.5%;
+}
+
+a.tag-block {
+  color: #ffffff;
+  text-decoration: none;
+}

@@ -57,13 +57,17 @@
       <hr class="less-padding dashed" />
       <ul class="comments"><% @pin.comments.each do | comment |%>
         <li>
+
+          <strong><%= link_to comment.user.username, user_path(comment.user) %> says:</strong></li>
+        <li>
         <%= comment.content %>
-        <br /><%= link_to comment.user.username, user_path(comment.user) %></li>
+      </li>
+
         <% if current_user != nil %>
            <% if current_user.id == comment.user.id %>
         <li>
-          <%= link_to 'Edit', edit_comment_path(comment) %> |
-          <%= link_to "Delete", comment, method: :delete %>
+          <%= link_to 'Edit', edit_comment_path(comment), class: 'slightly-smaller' %> |
+          <%= link_to "Delete", comment, method: :delete, class: 'slightly-smaller' %>
         </li>
         <% end %>
         <% end %>
