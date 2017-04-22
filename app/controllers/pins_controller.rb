@@ -47,9 +47,6 @@ class PinsController < ApplicationController
      redirect_to pins_path
   end
 
-  def test
-    @pins = Pin.all
-  end
 
 
   private
