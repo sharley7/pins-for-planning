@@ -1,27 +1,29 @@
+  <%= render '/layouts/pin_form_errors' %>
+
 <%= form_for @pin, html: { multipart: true } do |f| %>
 
-<%= render '/layouts/pin_form_errors', locals: {user: @user} %>
+
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %><br>
+    <%= f.text_field :title, class: 'form-control input-md' %><br>
     <%= f.label :image %> <br>
     <%= f.file_field :image %><br>
     <%= f.label :description %><br>
-    <%= f.text_area :description %><br>
-    Tags:
-
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+    <%= f.text_area :description, class: 'form-control input-md'
+     %><br>
+     <%= f.label :tags %><br>
+    <%= f.collection_check_boxes   :tag_ids, Tag.all, :id, :name, class: 'form-control input-md' %><br>
     <%= f.fields_for :tags, @pin.tags.build do | tags_fields| %>
-     <%= tags_fields.label :name %>
-     <%= tags_fields.text_field :name %>
+     <%= tags_fields.label :new_tag_name %>
+     <%= tags_fields.text_field  :name, class: 'form-control input-md'  %>
     <% end %>
 
      <%= f.hidden_field :user_id, value: current_user.id %>
 
 
 
-    <%= f.submit %>
+    <%= f.submit class: "comment-button" %>
 
 
 <% end %>

@@ -1,5 +1,7 @@
+  <%= render '/layouts/user_form_errors' %>
+
 <div class="row row-centered">
-  <div class="col full-width" id="top-pin">
+    <div class="col-md-offset-4 col-md-4" id="top-pin">
     <div class="row">
       <div class ="col col-centered full-width">
         <div id="push-pin">
@@ -16,18 +18,17 @@
 
 
 
-<%= render '/layouts/user_form_errors', locals: {user: @user} %>
 
 <p>
-<%= f.text_field :username, placeholder: 'username', class: 'form-control input-lg"' %>
+<%= f.text_field :username, placeholder: 'username', class: 'form-control input-lg' %>
 </p>
 <p>
-<%= f.text_field :email, placeholder: 'email', class: 'form-control input-lg"' %>
+<%= f.text_field :email, placeholder: 'email', class: 'form-control input-lg' %>
 </p>
 <p>
 
 
-<%= f.password_field :password, placeholder: 'password', class: 'form-control input-lg"' %>
+<%= f.password_field :password, placeholder: 'password', class: 'form-control input-lg' %>
 </p>
 
 <%= f.check_box :admin_request, {}, "submitted", "nil" %>

@@ -12,26 +12,39 @@ class SessionsController < ApplicationController
         log_in @user
         redirect_to @user
       else
+          flash[:notice] = "Please check your username or password."
         render 'new'
       end
-    else
+    elsif @user.nil?
+      flash[:notice] = "We cannot find that user. You may need to sign up."
       render 'new'
     end
   end
 
 
 def create_facebook
-   user = User.find_or_create_by(:uid => auth['uid']) do |u|
-     u.name = auth['info']['name']
+   @user = User.find_or_create_by(:uid => auth['uid']) do |u|
+     u.username = auth['info']['name']
      u.email = auth['info']['email']
+     u.password = random_password
    end
-   session[:user_id] = user.id
+  if @user.nil?
+    flash[:notice] = "We cannot find that user. You may need to sign up."
+    render '/login'
+  else
+   log_in(@user)
+   redirect_to user_path(@user)
+  end
  end
 
  def auth
    request.env['omniauth.auth']
  end
 
-
+ private
+ def random_password(size = 8)
+  chars = (('a'..'z').to_a + ('0'..'9').to_a) - %w(i o 0 1 l 0)
+  (1..size).collect{|a| chars[rand(chars.size)] }.join
+end
 
  end

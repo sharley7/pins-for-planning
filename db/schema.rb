@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420030811) do
+ActiveRecord::Schema.define(version: 20170421150514) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170420030811) do
     t.datetime "updated_at",                       null: false
     t.string   "role",            default: "user"
     t.string   "admin_request",   default: "nil"
+    t.string   "uid"
   end
 
 end
