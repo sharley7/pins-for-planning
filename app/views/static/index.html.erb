@@ -1,6 +1,32 @@
-<%= link_to("login with facebook!", "/auth/facebook") %>
-<% if current_user %>
-<%= current_user.username %>
-<% else %>
-You are not logged in
-<% end %>
+
+<div class="row row-centered">
+    <div class="col-md-offset-4 col-md-4" id="top-pin">
+    <div class="row">
+      <div class ="col col-centered full-width">
+        <div id="push-pin">
+          <%= image_tag("push_pin.png") %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class ="col col-centered full-width col-padding">
+        <h1 align='middle'>Welcome!</h1>
+        <hr class="less-padding" />
+
+<%= link_to signup_path do %><button class="comment-button"> Create an account</button><% end %>
+</p>
+<p>
+
+<%= link_to login_path do %><button class="comment-button"> Log In</button><% end %>
+
+</p>
+
+<a class="btn btn-block btn-social btn-facebook" href="/auth/facebook">
+  <span class="fa fa-facebook"></span> Sign in with Facebook
+</a>
+
+
+</div>
+</div>
+</div>
+</div>

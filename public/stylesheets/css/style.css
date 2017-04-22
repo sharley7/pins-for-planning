@@ -43,6 +43,10 @@
   padding: 1% 2.5%;
 }
 
+a.box-link {
+  color: #ffffff;
+}
+
 #pin h2 {
   font-size: 1em;
   font-weight: bold;
@@ -267,7 +271,7 @@ div.float-left {
     min-height: 160px;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     padding: 1%;
     font-size: 1em;
     letter-spacing: 1.5px;

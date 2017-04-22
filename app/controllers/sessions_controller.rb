@@ -21,6 +21,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session.clear
+    redirect_to root_path
+  end
+
 
 def create_facebook
    @user = User.find_or_create_by(:uid => auth['uid']) do |u|

@@ -42,8 +42,9 @@ class PinsController < ApplicationController
   end
 
   def destroy
-     @pin= Pin.find_by(id: params[:id])
+     @pin = Pin.find_by(id: params[:id])
      @pin.destroy
+     flash[:notice] = "Pin deleted!"
      redirect_to pins_path
   end
 

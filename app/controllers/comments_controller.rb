@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-    redirect_to pin_path(@comment.pin)
+    redirect_to :back
   end
 
 

@@ -13,7 +13,7 @@
         <h3 class='pin-title'><%= @pin.title%></h3>
           <%= image_tag(@pin.image.url) %>
 
-
+            <div class="row">
               <div class="float-left">
                 <%= form_for @pin.pin_endorsements.build do | f |  %>
                 <% if logged_in? %>
@@ -29,10 +29,23 @@
 
               </div>
             </div>
+          </div>
+          <% if current_user != nil %>
+             <% if current_user.id == @pin.user.id %>
+              <div class="full-width" style="text-align: left;">
+                  <ul>
+                    <li>
+                      <%= link_to 'Edit', edit_pin_path(@pin), class: 'box-link' %>
+                    </li>
+                    <li>
+                      <%= link_to "Delete", @pin, method: :delete, class: 'box-link' %>
+                    </li>
+                  </ul>
+                </div>
+          <% end %>
+        <% end %>
 
-
-
-      </div>
+    </div>
       <div class="col-md-7 col-padding col-centered">
         <div class="top-bumpers">
         <h4>Description</h4>
