@@ -10,13 +10,18 @@ class User < ApplicationRecord
  validates :email, presence: true,
                    format: { with: VALID_EMAIL_REGEX },
                    uniqueness: { case_sensitive: false }
-validates :password, presence: true, length: { minimum: 6 }
+validates :password, presence: true, length: { minimum: 6 }, on: create
 
 
-
- def role?
-   self.role = role.to_sym
+ def self.requests
+  if User.find_by(admin_request: "submitted").nil?
+    'alt'
+  else
+    list = User.where(admin_request: "submitted")
+  end
  end
+
+
 
 
 

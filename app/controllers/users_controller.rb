@@ -17,12 +17,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @requests = User.requests
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+       if @user.update(user_params)
+         flash[:notice] = "Success!"
+         redirect_to :back
+      else
+        flash[:notice] = @user.errors
+        redirect_to :back
+      end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :admin_request)
+    params.require(:user).permit(:id, :username, :email, :password, :admin_request, :role)
   end
 
 end

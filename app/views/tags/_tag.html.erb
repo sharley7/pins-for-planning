@@ -1,4 +1,4 @@
-<%= render(@pins.tags :partial => '/tags/index') %>
+
 <div class="row row-centered">
     <div class="col-md-offset-4 col-md-4" id="top-pin">
     <div class="row">
@@ -10,12 +10,13 @@
     </div>
     <div class="row">
       <div class="col col-centered full-width col-padding">
-        <h2>Tags</h2>
+        <h2>Filter by tag</h2>
         <hr class="less-padding" />
         <ul class='tag-block'>
         <% @tags.each do | tag| %>
-          <li class='tag-block'><%= link_to tag.name, tag_pins_path(tag), class: "tag-block"%></li>
-        <% end %>
+          <li class="<%=active_class(tag_pins_path(tag))%>">
+            <%= link_to tag.name, tag_pins_path(tag), class: 'tag-block' %></li>
+          <% end %>
       </ul>
       </div>
       </div>

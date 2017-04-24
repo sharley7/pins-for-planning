@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :tags
+  resources :tags do
+     resources :pins, only: [:show, :index]
+   end
+
   resources :users
 
   resources :users, only: [:show] do
-     # nested resource for posts
      resources :pins, only: [:show, :index]
    end
 
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :boards
   resources :sessions
+  resources :admins
 
   root 'static#index'
   get '/auth/facebook/callback' => 'sessions#create_facebook'
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
 
   get '/test', to: 'pins#test'
   delete 'logout', to: 'sessions#destroy'
+  patch '/admins/approve_admin', to: 'admins#approve_admin'
 
 
 

@@ -342,7 +342,7 @@ div.extra-padding {
   padding: 1% 3% 3% 3%;
   border: 1px solid #d3d3d3;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
-  min-height: 250px;
+  height: AUTO;
   margin-top: 2%;
   margin-bottom: 2%;
 }
@@ -361,7 +361,7 @@ div.extra-padding {
 }
 
 .col-padding {
-  padding: 2%;
+  padding: 0% 2% 2% 2%;
 }
 
 #single-pin {
@@ -463,4 +463,67 @@ li.tag-block {
 a.tag-block {
   color: #ffffff;
   text-decoration: none;
+}
+
+li.active {
+  display: inline-block;
+  background-color: #ffffff;
+  border: 1px solid #f26466;
+  font-weight: bolder;
+  color: #f26466;
+  padding: 1% 2.5%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+}
+
+li.active a {
+  color: #f26466;
+}
+
+
+#admin-pin {
+  background-color: #fff;
+  padding: 1% 3% 3% 3%;
+  border: 1px solid #d3d3d3;
+  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+  height: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#admin-pin #push-pin img {
+  top: -10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 30px;
+  display: inline-block;
+  align: middle;
+}
+
+#admin-pin ul.comments {
+ display: block;
+ list-style-type: none;
+ padding-left: 0;
+}
+
+#admin-pin ul.comments li {
+  font-weight: normal;
+  width: 100%;
+  color: #000000;
+  background: #ffffff;
+
+}
+
+ul.tag-block {
+ list-style: none;
+ padding-left: 0;
+}
+
+li.tag-block {
+ display: inline-block;
+ background-color: #f26466;
+ font-weight: bolder;
+ color: #fff;
+ padding: 1% 2.5%;
 }

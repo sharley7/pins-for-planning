@@ -17,8 +17,11 @@ class PinsController < ApplicationController
   end
 
   def index
+    @tags = Tag.all
    if params[:user_id]
      @pins = User.find(params[:user_id]).pins
+   elsif params[:tag_id]
+     @pins = Tag.find(params[:tag_id]).pins
     else
      @pins = Pin.all
     end
