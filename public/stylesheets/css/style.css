@@ -458,6 +458,7 @@ li.tag-block {
  font-weight: bolder;
  color: #fff;
  padding: 1% 2.5%;
+ margin: 1%;
 }
 
 a.tag-block {
@@ -475,6 +476,7 @@ li.active {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
  -webkit-box-sizing: border-box;
+ margin: 1%;
 }
 
 li.active a {
@@ -512,17 +514,4 @@ li.active a {
   color: #000000;
   background: #ffffff;
 
-}
-
-ul.tag-block {
- list-style: none;
- padding-left: 0;
-}
-
-li.tag-block {
- display: inline-block;
- background-color: #f26466;
- font-weight: bolder;
- color: #fff;
- padding: 1% 2.5%;
 }

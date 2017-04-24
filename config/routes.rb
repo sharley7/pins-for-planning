@@ -3,19 +3,19 @@ Rails.application.routes.draw do
      resources :pins, only: [:show, :index]
    end
 
-  resources :users
+
 
   resources :users, only: [:show] do
      resources :pins, only: [:show, :index]
    end
 
+   resources :users
   resources :pins
   resources :pin_tags
   resources :pin_endorsements
   resources :comments
   resources :boards
-  resources :sessions
-  resources :admins
+  resources :sessions, only: [:new, :create, :destroy]
 
   root 'static#index'
   get '/auth/facebook/callback' => 'sessions#create_facebook'
