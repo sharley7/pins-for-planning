@@ -1,94 +1,80 @@
 <div class="row row-centered">
+
   <div class="col col-centered full-width" id="single-pin">
     <div class="row">
-      <div class ="col col-centered full-width">
-        <div id="push-pin">
-          <%= image_tag("push_pin.png") %>
-        </div>
+
+    <div class ="col col-centered full-width">
+      <div id="push-pin">
+        <%= image_tag("push_pin.png") %>
       </div>
     </div>
 
+    </div>
+
     <div class="row row-centered">
+
       <div class="col-md-5 col-padding align-top" id="pin-photo" >
         <h3 class='pin-title'><%= @pin.title%></h3>
-          <%= image_tag(@pin.image.url) %>
+        <%= image_tag(@pin.image.url) %>
 
-            <div class="row">
-              <div class="float-left">
-                <%= form_for @pin.pin_endorsements.build do | f |  %>
+          <div class="row">
+            <div class="float-left">
+              <%= form_for @pin.pin_endorsements.build do | f |  %>
                 <% if logged_in? %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
                 <% end %>
                 <%= f.hidden_field :pin_id, value: @pin.id %>
                 <%= f.submit '✔', class: 'vote' %>
                 <% end %>
-              </div>
-              <div class="endorse padding-endorse float-left">
-                <div id="votemod">
+             </div>
+             <div class="endorse padding-endorse float-left">
+               <div id="votemod">
                   <%= pluralize(@pin.pin_endorsements.count, "endorsement") %>
-
-              </div>
-            </div>
+               </div>
+             </div>
           </div>
-          <% if current_user != nil %>
-             <% if current_user.id == @pin.user.id %>
-              <div class="full-width" style="text-align: left;">
-                  <ul>
-                    <li>
-                      <%= link_to 'Edit', edit_pin_path(@pin), class: 'box-link' %>
-                    </li>
-                    <li>
-                      <%= link_to "Delete", @pin, method: :delete, class: 'box-link' %>
-                    </li>
-                  </ul>
-                </div>
-          <% end %>
-        <% end %>
 
-    </div>
+          <% if can? :manage, @pin %>
+          <div class="full-width" style="text-align: left;">
+            <ul>
+              <li><%= link_to 'Edit', edit_pin_path(@pin), class: 'box-link' %></li>
+              <li><%= link_to "Delete", @pin, method: :delete, class: 'box-link' %></li>
+            </ul>
+          </div>
+          <% end %>
+      </div>
       <div class="col-md-7 col-padding col-centered">
         <div class="top-bumpers">
-        <h4>Description</h4>
-        <hr class="less-padding dashed" />
-      <p><%= @pin.description %></p>
-      </div>
-      <div class="top-bumpers">
-      <h4>Comments</h4>
-      <hr class="less-padding dashed" />
-      <ul class="comments"><% @pin.comments.each do | comment |%>
-        <li>
-
-          <strong><%= link_to comment.user.username, user_path(comment.user) %> says:</strong></li>
-        <li>
-        <%= comment.content %>
-      </li>
-
-        <% if current_user != nil %>
-           <% if current_user.id == comment.user.id %>
-        <li>
-          <%= link_to 'Edit', edit_comment_path(comment), class: 'slightly-smaller' %> |
-          <%= link_to "Delete", comment, method: :delete, class: 'slightly-smaller' %>
-        </li>
-        <% end %>
-        <% end %>
-        <hr class="dashed less-padding"/>
-        <% end %>
-      </ul>
-        <%= form_for @pin.comments.build do |f| %>
-          <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
-          <%= f.hidden_field :pin_id, value: @pin.id %>
-          <% if logged_in? %>
-          <p id="comment-box-text">
-          You are posting as <strong>
-          <%= current_user.username %>.</strong></p>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <% elsif current_user = nil  %>
-          <%= f.fields_for :user, pin.users.build do |user| %>
-           <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
-          <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>
-          <%= user.text_field :password, placeholder: "password", class: "form-control comment-input" %>
-          <% end %>
-        <% end %>
+          <h4>Description</h4>
+          <hr class="less-padding dashed" />
+          <p><%= @pin.description %></p>
+        </div>
+        <div class="top-bumpers">
+          <h4>Comments</h4>
+          <hr class="less-padding dashed" />
+          <ul class="comments">
+          <% @pin.comments.each do | comment |%>
+            <li><strong><%= link_to comment.user.username, user_path(comment.user) %> says:</strong></li>
+            <li><%= comment.content %></li>
+            <% if can? :manage, comment %>
+              <li><%= link_to 'Edit', edit_comment_path(comment), class: 'slightly-smaller' %> |  <%= link_to "Delete", comment, method: :delete, class: 'slightly-smaller' %></li>
+            <% end %>
+           <hr class="dashed less-padding"/>
+           <% end %>
+          </ul>
+          <%= form_for @pin.comments.build do |f| %>
+            <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
+            <%= f.hidden_field :pin_id, value: @pin.id %>
+              <% if logged_in? %>
+                <p id="comment-box-text">You are posting as <strong><%= current_user.username %>.</strong></p>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <% elsif current_user = nil  %>
+                <%= f.fields_for :user, pin.users.build do |user| %>
+                <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
+                <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>
+                <%= user.text_field :password, placeholder: "password", class: "form-control comment-input" %>
+              <% end %>
+           <% end %>
 
           <%= f.submit "comment", class: "comment-button-single" %>
         <% end %>
@@ -105,7 +91,7 @@
       </ul>
       </div>
     </div>
-  </div>
+   </div>
 
   </div>
 </div>

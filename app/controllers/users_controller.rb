@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @requests = User.requests
+    @comments = Comment.last(10)
   end
 
   def update

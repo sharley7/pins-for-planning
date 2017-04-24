@@ -1,0 +1,6 @@
+<ul class="comments">
+    <li><strong><%= link_to comment.user.username, user_path(comment.user) %> says:</strong></li>
+    <li><%= comment.content %></li>
+    <li><%= link_to "Delete", comment, method: :delete, class: 'slightly-smaller' %></li>
+  <hr class="dashed less-padding"/>
+</ul>

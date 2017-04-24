@@ -36,16 +36,42 @@
 
 
 <div class="row">
-    <div class="col-md-4" id="admin-pin">
+    <div class="col-md-3" id="admin-pin">
       <div id="push-pin">
         <%= image_tag("push_pin.png") %>
       </div>
       <h3>Admin Requests</h3>
-      <hr />
-      <ul class="comments">
+      <hr class="less-pading"/>
       <%= render(@requests) %>
-      </ul>
-  </div>
+    </div>
+
+  <div class="col-md-4" id="admin-pin">
+    <div id="push-pin">
+      <%= image_tag("push_pin.png") %>
+    </div>
+    <h3>Recent Comments</h3>
+    <hr />
+    <ul class="comments">
+    <%= render(@comments) %>
+    </ul>
+</div>
+
+<div class="col-md-3" id="admin-pin">
+    <div id="push-pin">
+      <%= image_tag("push_pin.png") %>
+    </div>
+    <% if current_user == nil || current_user.id != @user.id %>
+      <h3><%=@user.username%>'s Profile</h3>
+    <% else %>
+      <h3>Welcome, <%= @user.username %></h3>
+    <% end %>
+     <hr />
+     <ul>
+      <li><%=@user.pins.count %> <%= link_to 'pins', user_pins_path(@user) %>.</li>
+      <li><%=@user.comments.count %> comments.</li>
+      <li><%=@user.pin_endorsements.count %> endorsements.</li>
+    </ul>
+</div>
 </div>
 
 <% end %>
