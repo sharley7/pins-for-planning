@@ -11,16 +11,11 @@ class Pin < ApplicationRecord
 
   has_attached_file :image, :styles => { :medium => "300x300#" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-    accepts_nested_attributes_for :tags, reject_if: lambda { |a| a['name'].blank? }, :allow_destroy => true
 
-  def tags_attributes=(tags_attributes)
-   if tags_attributes['name'] != ""
-      tags_attributes.values.each do |tag_attribute|
-       tag = Tag.find_or_create_by(tag_attribute)
-       self.tags << tag
-     end
-  end
-end
+  accepts_nested_attributes_for :tags, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
+
+
+
 
 
 
