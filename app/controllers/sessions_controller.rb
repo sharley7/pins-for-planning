@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
           render 'new'
         end
       elsif @user.nil?
-        flash[:notice] = "We cannot find that user. You may need to sign up."
+        flash[:notice] = "We cannot find that user and password combination. You may need to sign up."
         render 'new'
       end
    end
