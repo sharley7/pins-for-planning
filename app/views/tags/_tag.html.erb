@@ -1,6 +1,5 @@
-
 <div class="row row-centered">
-    <div class="col-md-offset-4 col-md-4" id="top-pin">
+  <div class="col-md-offset-4 col-md-4" id="top-pin">
     <div class="row">
       <div class ="col col-centered full-width">
         <div id="push-pin">
@@ -16,9 +15,12 @@
         <% @tags.each do | tag| %>
           <li class="<%=active_class(tag_pins_path(tag))%>">
             <%= link_to tag.name, tag_pins_path(tag), class: 'tag-block' %></li>
-          <% end %>
-      </ul>
+         <% end %>
+           <li class="<%=active_class(pins_path)%>">
+            <%= link_to 'All', pins_path, class: 'tag-block' %>
+          </li>
+        </ul>
       </div>
-      </div>
-      </div>
-      </div>
+    </div>
+  </div>
+</div>

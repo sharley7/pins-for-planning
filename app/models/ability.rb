@@ -17,10 +17,7 @@ class Ability
     end
 
     if user != nil && user.role == "admin"
-      can :manage, User
-      can :manage, Pin
-      can :manage, Comment
-      can :manage, Tag
+      can :manage, :all
     end
 
 

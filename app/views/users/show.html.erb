@@ -31,8 +31,8 @@
 </div>
 <%= render(@user.pins :partial => '/pins/pin')  %>
 
-
 <% elsif @user.role == "admin" %>
+
 
 
 <div class="row">
@@ -71,7 +71,7 @@
       <li><%=@user.comments.count %> comments.</li>
       <li><%=@user.pin_endorsements.count %> endorsements.</li>
     </ul>
-</div>
+  </div>
 </div>
 
 <% end %>
