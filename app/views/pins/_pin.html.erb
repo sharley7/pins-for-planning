@@ -76,7 +76,7 @@
                   <hr class="dashed less-padding"/>
                   <% end %>
                 </ul>
-                <br />
+                <div class="top-bumpers">
                 <h5>Add your voice:</h5>
                 <%= form_for pin.comments.build do |f| %>
                   <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
@@ -87,6 +87,8 @@
                     <%= current_user.username %>.</div></p>
                     <%= f.hidden_field :user_id, value: current_user.id %>
                   <% else %>
+                  <h5>
+                  Please create an account to post your comment.</h5>
                     <%= f.fields_for :user, pin.users.build do |user| %>
                      <p><%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
                      </p><p>
@@ -100,6 +102,7 @@
                     <%= f.submit "comment", class: "comment-button" %>
                     </p>
                 <% end %>
+              </div>
                 </ul>
             </div>
           </div>

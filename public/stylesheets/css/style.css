@@ -242,7 +242,9 @@ hr.dashed {
  border: 0px;
  border-bottom: 1px solid #f26466;
  box-shadow: none;
- padding-bottom: 0;
+ text-align: bottom;
+ outline: 0;
+ border-radius: 0;
 }
 
 .comment-button {
