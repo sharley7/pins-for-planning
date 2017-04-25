@@ -1,24 +1,49 @@
-# README
+# The Planning Board App
+A simple pinterest-inspired application designed to help the municipal planning process. This version features downtown Brooklyn.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+### Installation
+Clone the repository down, open the project file in terminal, and run bundle install.
 
-* Ruby version
+```
+cd participatory-budget-board
+```
 
-* System dependencies
+```
+bundle install
+```
 
-* Configuration
+### Seeding Data
+This project file includes a seeds.db file with the neighborhood data and a few example user profiles and proposals.
 
-* Database creation
+To seed your database, run:
 
-* Database initialization
+```
+rake db:seed
+```
 
-* How to run the test suite
+## Built With
 
-* Services (job queues, cache servers, search engines, etc.)
+* Ruby on Rails
+* Bootstrap
+* ActiveRecord
+* Sqlite3
+* Paperclip
+* Bcrypt
+* cancancan
+* Figaro
+* Omniauth
+* JQuery
 
-* Deployment instructions
 
-* ...
+## Contributing
+Contributions are welcome. Please submit a pull request with any proposed pages.
+
+## Author
+
+**[Siobhan Harley](http://https://github.com/sharley7/)**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
