@@ -66,21 +66,25 @@
            <hr class="dashed less-padding"/>
            <% end %>
           </ul>
+          <h5>Add your voice:</h5>
           <%= form_for @pin.comments.build do |f| %>
             <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
             <%= f.hidden_field :pin_id, value: @pin.id %>
               <% if logged_in? %>
                 <p id="comment-box-text">You are posting as <strong><%= current_user.username %>.</strong></p>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <% elsif current_user = nil  %>
-                <%= f.fields_for :user, pin.users.build do |user| %>
-                <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
+              <% else %>
+                <%= f.fields_for :user, @pin.users.build do |user| %>
+                <p><%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %></p><p>
                 <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>
-                <%= user.text_field :password, placeholder: "password", class: "form-control comment-input" %>
+                </p><p>
+                <%= user.password_field :password, placeholder: "password", class: "form-control comment-input" %>
+                </p>
               <% end %>
            <% end %>
-
+          <p>
           <%= f.submit "comment", class: "comment-button-single" %>
+        </p>
         <% end %>
       </ul>
     </div>
