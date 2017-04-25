@@ -19,6 +19,17 @@ before_action :logged_in?
     end
   end
 
+  def index
+    @pin_endorsements = PinEndorsement.all.map do | pe |
+      pe.pin
+    end
+    if params[:user_id]
+      @pin_endorsements = User.find(params[:user_id]).pin_endorsements.map do | pe |
+        pe.pin
+      end
+     end
+  end
+
   private
 
   def pin_endorsement_params

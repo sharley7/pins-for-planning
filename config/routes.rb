@@ -3,18 +3,23 @@ Rails.application.routes.draw do
      resources :pins, only: [:show, :index]
    end
 
-
-
   resources :users, only: [:show] do
      resources :pins, only: [:show, :index]
    end
 
-   resources :users
+   resources :users, only: [:show] do
+      resources :comments, only: [:index]
+    end
+
+   resources :users, only: [:show] do
+       resources :pin_endorsements, only: [:index]
+    end
+
+  resources :users
   resources :pins
   resources :pin_tags
   resources :pin_endorsements
   resources :comments
-  resources :boards
   resources :sessions, only: [:new, :create, :destroy]
 
   root 'static#index'

@@ -23,6 +23,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def index
+    @comments = Comment.all
+     if params[:user_id]
+       @comments = User.find(params[:user_id]).comments
+      end
+   end
+
   def destroy
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy

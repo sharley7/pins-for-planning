@@ -22,6 +22,10 @@ class PinsController < ApplicationController
      @pins = User.find(params[:user_id]).pins
    elsif params[:tag_id]
      @pins = Tag.find(params[:tag_id]).pins
+   elsif params[:user_id] && params[:tag_id]
+      @pins = User.find(params[:user_id]).pins.map do | pin |
+        pin.params[:tag_id]
+      end
     else
      @pins = Pin.all
     end

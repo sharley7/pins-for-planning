@@ -515,3 +515,17 @@ li.active a {
   background: #ffffff;
 
 }
+
+#top-pin ul.comments {
+ display: block;
+ list-style-type: none;
+ padding-left: 0;
+}
+
+#top-pin ul.comments li {
+  font-weight: normal;
+  width: 100%;
+  color: #000000;
+  background: #ffffff;
+
+}

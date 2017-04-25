@@ -1,4 +1,4 @@
-<% if @user.role == "user" %>
+<% if current_user == nil || current_user.role != "admin" %>
 
 <div class="row row-centered">
     <div class="col-md-offset-4 col-md-4" id="top-pin">
@@ -11,8 +11,6 @@
     </div>
     <div class="row">
       <div class ="col col-centered full-width col-padding">
-
-
         <% if current_user == nil || current_user.id != @user.id %>
           <h3><%=@user.username%>'s Profile</h3>
         <% else %>
@@ -20,18 +18,36 @@
         <% end %>
          <hr />
          <ul>
-          <li><%=@user.pins.count %> <%= link_to 'pins', user_pins_path(@user) %>.</li>
-          <li><%=@user.comments.count %> comments.</li>
-          <li><%=@user.pin_endorsements.count %> endorsements.</li>
+          <li><% if @user.pins.count > 0 %>
+              <%= link_to user_pins_path(@user) do %>
+              <%=@user.pins.count %> pins
+              <% end %>
+              <% else %>
+              <%=@user.pins.count %> pins
+              <% end %></li>
+          <li><% if @user.comments.count > 0 %>
+            <%= link_to user_comments_path(@user) do %> <%= @user.comments.count%>
+            <% end %>
+            <% else %>
+            <%= @user.comments.count%> comments
+            <% end %></li>
+          <li><% if @user.pin_endorsements.count > 0 %>
+            <%= link_to user_pin_endorsements_path(@user) do %>
+            <%=@user.pin_endorsements.count %> endorsements
+            <% end %>
+            <% else %>
+            <%=@user.pin_endorsements.count %> endorsements
+            <% end %>
+          </li>
         </ul>
 
       </div>
     </div>
   </div>
 </div>
-<%= render(@user.pins :partial => '/pins/pin')  %>
 
-<% elsif @user.role == "admin" %>
+
+<% else %>
 
 
 
@@ -67,9 +83,27 @@
     <% end %>
      <hr />
      <ul>
-      <li><%=@user.pins.count %> <%= link_to 'pins', user_pins_path(@user) %>.</li>
-      <li><%=@user.comments.count %> comments.</li>
-      <li><%=@user.pin_endorsements.count %> endorsements.</li>
+      <li><% if @user.pins.count > 0 %>
+          <%= link_to user_pins_path(@user) do %>
+          <%=@user.pins.count %> pins
+          <% end %>
+          <% else %>
+          <%=@user.pins.count %> pins
+          <% end %></li>
+      <li><% if @user.comments.count > 0 %>
+        <%= link_to user_comments_path(@user) do %> <%= @user.comments.count%>
+        <% end %>
+        <% else %>
+        <%= @user.comments.count%> comments
+        <% end %></li>
+      <li><% if @user.pin_endorsements.count > 0 %>
+        <%= link_to user_pin_endorsements_path(@user) do %>
+        <%=@user.pin_endorsements.count %> endorsements
+        <% end %>
+        <% else %>
+        <%=@user.pin_endorsements.count %> endorsements
+        <% end %>
+      </li>
     </ul>
   </div>
 </div>
