@@ -7,9 +7,12 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
     if @comment.save
-      flash[:notice] = "Your comment has been created."
+      if @comment.user != logged_in?
+        log_in(@comment.user)
+      end
+      flash[:notice] = "Your comment has been created,  #{@comment.user.username}"
       redirect_to :back
-    elsif current_user == nil
+    elsif @comment.user.nil?
       flash[:notice] = "You must be logged in to comment."
       redirect_to :back
     else

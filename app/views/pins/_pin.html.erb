@@ -1,5 +1,3 @@
-
-
 <div class="col-md-3 pin col-centered center-block" id="pin">
   <!--- push pin image -->
   <div id="push-pin">
@@ -7,12 +5,14 @@
   </div>
   <!-- end push pin image -->
 
+  <!-- start pin image and title -->
   <h1><%= pin.title %></h1>
   <hr class="less-padding"/>
   <div class="image-container">
-  <%= image_tag(pin.image.url) %>
+    <%= image_tag(pin.image.url) %>
+  </div>
+  <!-- end pin image -->
 
-    </div>
   <!-- endorsement box -->
   <div class="row more-padding">
     <div class="col-xs-12 endorse">
@@ -40,65 +40,63 @@
         <div class="read-more-button">
           <%= link_to pin_path(pin) do %><button class="comment-button"> more</button><% end %>
           <section align="left">
+
             <strong class="slightly-smaller" style="color: #a9a9a9;">Submitted by: <%= link_to pin.user.username, user_path(pin.user)%></strong>
           </section>
 
         </div>
+
         <hr class="less-padding" />
-          <button class="accordion"><h2><%= pluralize(pin.tags.count, "Tag") %> +</h2> </button>
+
+        <button class="accordion"><h2><%= pluralize(pin.tags.count, "Tag") %> +</h2> </button>
            <!-- accordion -->
             <div class="panel">
               <hr class="less-padding" />
-                <ul>
-                  <% pin.tags.each do | tag | %>
+              <ul>
+                <% pin.tags.each do | tag | %>
                   <li><%= tag.name %></li>
-                  <% end %>
-                </ul>
+                <% end %>
+              </ul>
             </div>
-          <button class="accordion"><h2><%= pluralize(pin.comments.count, "Comment") %> +</h2></button>
+         <button class="accordion"><h2><%= pluralize(pin.comments.count, "Comment") %> +</h2></button>
             <div class="panel">
               <hr class="less-padding" />
                 <ul class="comments"><% pin.comments.each do | comment |%>
-                  <li>
+                  <li><strong><%= link_to comment.user.username, user_path(comment.user) %> says:</strong></li>
 
-                    <strong><%= link_to comment.user.username, user_path(comment.user) %> says:</strong></li>
-                  <li>
-                  <%= comment.content %>
-                </li>
+                  <li><%= comment.content %></li>
 
                   <% if current_user != nil %>
                      <% if current_user.id == comment.user.id %>
-                  <li>
-                    <%= link_to 'Edit', edit_comment_path(comment), class: 'slightly-smaller' %> |
+                  <li><%= link_to 'Edit', edit_comment_path(comment), class: 'slightly-smaller' %> |
                     <%= link_to "Delete", comment, method: :delete, class: 'slightly-smaller' %>
                   </li>
-                  <% end %>
+                    <% end %>
                   <% end %>
                   <hr class="dashed less-padding"/>
                   <% end %>
                 </ul>
-                  <%= form_for pin.comments.build do |f| %>
-                    <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
-                    <%= f.hidden_field :pin_id, value: pin.id %>
-                    <% if current_user %>
+                <%= form_for pin.comments.build do |f| %>
+                  <%= f.text_area :content, placeholder: "Your comment", class: "form-control comment-input"%><br />
+                  <%= f.hidden_field :pin_id, value: pin.id %>
+                  <% if logged_in? %>
                     <p id="comment-box-text">
                     You are posting as <div class="strong">
                     <%= current_user.username %>.</div></p>
                     <%= f.hidden_field :user_id, value: current_user.id %>
-                    <% elsif current_user = nil  %>
+                  <% else %>
                     <%= f.fields_for :user, pin.users.build do |user| %>
                      <%= user.text_field :username, placeholder: "username", class: "form-control comment-input" %>
                     <%= user.text_field :email, placeholder: "email", class: "form-control comment-input" %>
-                    <%= user.text_field :password, placeholder: "password", class: "form-control comment-input" %>
+                    <%= user.password_field :password, placeholder: "password", class: "form-control comment-input" %>
                     <% end %>
-                  <% end %>
-
+                    <% end %>
                     <%= f.submit "comment", class: "comment-button" %>
-                  <% end %>
+                <% end %>
                 </ul>
             </div>
-
-
+          </div>
         </div>
-    </div>
+
+
 </div>

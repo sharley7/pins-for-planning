@@ -1,6 +1,7 @@
 class Pin < ApplicationRecord
   belongs_to :user
   has_many :comments
+  has_many :users, through: :comments
   has_many :pin_tags
   has_many :tags, through: :pin_tags
   has_many :pin_endorsements

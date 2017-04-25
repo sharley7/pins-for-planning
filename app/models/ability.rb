@@ -6,6 +6,7 @@ class Ability
     if user.nil?
       can :read, :all
       can :create, User
+      can :create, Comment
     end
 
     if user != nil
