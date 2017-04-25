@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:user][:username].downcase)
+    @user = User.where('lower(username) = ?', params[:user][:username].downcase).first
       if @user && @user.authenticate(params[:user][:password])
         if @user != nil
           log_in @user

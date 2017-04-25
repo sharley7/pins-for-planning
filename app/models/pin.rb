@@ -7,7 +7,7 @@ class Pin < ApplicationRecord
   has_many :pin_endorsements
   validates :title, presence: true, length: { in: 3..40 }
   validates :image_file_name, presence: true
-  validates :description, length: { in: 10..200 }
+  validates :description, length: { in: 10..300 }
 
 
   has_attached_file :image, :styles => { :medium => "300x300#" }
