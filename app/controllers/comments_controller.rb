@@ -28,6 +28,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Your comment has been updated."
       redirect_to pins_path
     else
+      flash[:notice] = "Your comment could not be saved."
       render 'edit'
     end
   end
