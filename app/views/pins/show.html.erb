@@ -42,6 +42,9 @@
             </ul>
           </div>
           <% end %>
+          <section align="left">
+            <strong>Submitted by: <%= link_to @pin.user.username, user_path(@pin.user)%></strong>
+          </section>
       </div>
       <div class="col-md-7 col-padding col-centered">
         <div class="top-bumpers">

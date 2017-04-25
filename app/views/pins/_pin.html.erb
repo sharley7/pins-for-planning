@@ -39,6 +39,10 @@
       <p><%= truncate(pin.description, length: 60 ) %></p>
         <div class="read-more-button">
           <%= link_to pin_path(pin) do %><button class="comment-button"> more</button><% end %>
+          <section align="left">
+            <strong class="slightly-smaller" style="color: #a9a9a9;">Submitted by: <%= link_to pin.user.username, user_path(pin.user)%></strong>
+          </section>
+
         </div>
         <hr class="less-padding" />
           <button class="accordion"><h2><%= pluralize(pin.tags.count, "Tag") %> +</h2> </button>
@@ -93,6 +97,8 @@
                   <% end %>
                 </ul>
             </div>
-          </div>
+
+
         </div>
+    </div>
 </div>

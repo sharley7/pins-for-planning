@@ -26,7 +26,7 @@
               <%=@user.pins.count %> pins
               <% end %></li>
           <li><% if @user.comments.count > 0 %>
-            <%= link_to user_comments_path(@user) do %> <%= @user.comments.count%>
+            <%= link_to user_comments_path(@user) do %> <%= @user.comments.count%> comments
             <% end %>
             <% else %>
             <%= @user.comments.count%> comments
