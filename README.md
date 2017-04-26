@@ -7,7 +7,7 @@ A simple pinterest-inspired application designed to help the municipal planning 
 Clone the repository down, open the project file in terminal, and run bundle install.
 
 ```
-cd participatory-budget-board
+cd the-planning-board
 ```
 
 ```
