@@ -15,12 +15,7 @@ Rails.application.routes.draw do
        resources :pin_endorsements, only: [:index]
     end
 
-  resources :users
-  resources :pins
-  resources :pin_tags
-  resources :pin_endorsements
-  resources :comments
-  resources :sessions, only: [:new, :create, :destroy]
+
 
   root 'static#index'
   get '/auth/facebook/callback' => 'sessions#create_facebook'
@@ -28,9 +23,15 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   get '/test', to: 'pins#test'
-  delete 'logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
   patch '/admins/approve_admin', to: 'admins#approve_admin'
 
+  resources :users
+  resources :pins
+  resources :pin_tags
+  resources :pin_endorsements
+  resources :comments
+  resources :sessions
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
