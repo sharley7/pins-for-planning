@@ -14,15 +14,6 @@ cd the-planning-board
 bundle install
 ```
 
-### Seeding Data
-This project file includes a seeds.db file with the neighborhood data and a few example user profiles and proposals.
-
-To seed your database, run:
-
-```
-rake db:seed
-```
-
 ## Built With
 
 * Ruby on Rails
