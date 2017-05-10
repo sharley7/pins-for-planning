@@ -100,7 +100,7 @@ body {
 /*//////////// Nav Bar ///////////////*/
 
 .navbar-inverse {
- background: url('/assets/wood-texture.jpg');
+ background: url('/assets/wood-texture-dc5c74a9992c5efb8043e3d944573da2aa104aae9f45d01e3258f32281b3640b');
  background-color: @navbar-inverse-bg;
  border-color: #6D3F19;
 }
