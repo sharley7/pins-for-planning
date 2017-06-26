@@ -89,7 +89,7 @@ body {
 }
 
 .full {
-  background: url('/assets/cork-board.jpg') no-repeat center center fixed;
+  background: url('public/assets/cork-board-895e4c9f6300db3f75b90bb5dd84359e4560ff33f1653ced16beb29939290851.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
